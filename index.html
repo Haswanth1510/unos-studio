@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>unos.studio — Web Agency, India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f2ec;
+      --ink: #111010;
+      --mid: #7a7570;
+      --accent: #c8a96e;
+      --line: rgba(17,16,16,0.1);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* ── CURSOR ── */
+    #cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+      mix-blend-mode: multiply;
+    }
+    #cursor.big { width: 64px; height: 64px; background: var(--accent); opacity: 0.45; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 60px;
+      transition: padding 0.4s ease, background 0.4s ease;
+    }
+    nav.scrolled {
+      padding: 18px 60px;
+      background: rgba(245,242,236,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 44px; }
+    nav ul li a {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: lowercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    nav ul li a:hover { color: var(--ink); }
+    nav ul li a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 0 60px 60px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-parallax-bg {
+      position: absolute;
+      right: -60px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 32vw;
+      font-weight: 300;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(17,16,16,0.04);
+      pointer-events: none;
+      user-select: none;
+      font-family: var(--serif);
+      line-height: 1;
+      will-change: transform;
+    }
+
+    .hero-dot {
+      position: absolute;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,169,110,0.16) 0%, transparent 70%);
+      top: 18%; left: -100px;
+      pointer-events: none;
+      animation: floatDot 9s ease-in-out infinite;
+    }
+    @keyframes floatDot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-28px); }
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 28px;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--accent);
+    }
+
+    .reveal-line { overflow: hidden; display: block; }
+    .reveal-line-inner {
+      display: block;
+      transform: translateY(110%);
+      animation: lineReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .reveal-line:nth-child(1) .reveal-line-inner { animation-delay: 0.5s; }
+    .reveal-line:nth-child(2) .reveal-line-inner { animation-delay: 0.65s; }
+    .reveal-line:nth-child(3) .reveal-line-inner { animation-delay: 0.8s; }
+    @keyframes lineReveal { to { transform: translateY(0); } }
+
+    .hero-headline {
+      font-size: clamp(4rem, 9.5vw, 10rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      max-width: 980px;
+    }
+    .hero-headline em { font-style: italic; color: var(--accent); }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.1s forwards;
+    }
+
+    .hero-sub {
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 360px;
+      line-height: 1.8;
+    }
+    .hero-sub strong { color: var(--ink); font-weight: 400; }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 4px;
+      transition: gap 0.3s ease, color 0.2s, border-color 0.2s;
+    }
+    .hero-cta:hover { gap: 24px; color: var(--accent); border-color: var(--accent); }
+
+    .hero-stats {
+      display: flex;
+      gap: 60px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.3s forwards;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); font-style: italic; }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      padding: 18px 0;
+      background: var(--ink);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+    .marquee-track span {
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
+      color: rgba(245,242,236,0.42);
+      padding: 0 36px;
+      white-space: nowrap;
+    }
+    .marquee-track span.dot { color: var(--accent); opacity: 1; padding: 0 6px; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .about-left {
+      padding: 100px 60px;
+      border-right: 1px solid var(--line);
+    }
+    .about-right { padding: 100px 60px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      text-transform: lowercase;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--accent);
+    }
+    .about-heading {
+      font-size: clamp(2rem, 3.4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin-bottom: 28px;
+    }
+    .about-heading em { font-style: italic; color: var(--accent); }
+    .about-body {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.85;
+      max-width: 400px;
+    }
+    .about-body p + p { margin-top: 18px; }
+    .tagline-big {
+      font-size: clamp(2.2rem, 3.8vw, 4rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .tagline-big em { font-style: italic; color: var(--accent); }
+    .tagline-sub {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      line-height: 2;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 120px 60px;
+      border-bottom: 1px solid var(--line);
+    }
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 72px;
+    }
+    .services-title {
+      font-size: clamp(2.8rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .services-title em { font-style: italic; color: var(--accent); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .service-card {
+      background: var(--cream);
+      padding: 50px 42px;
+      transition: background 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--ink); }
+    .service-card:hover .service-num { color: var(--accent); }
+    .service-card:hover .service-title { color: var(--cream); }
+    .service-card:hover .service-desc { color: rgba(245,242,236,0.5); }
+
+    .service-num {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 36px;
+      transition: color 0.4s;
+    }
+    .service-title {
+      font-size: 1.8rem;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      transition: color 0.4s;
+    }
+    .service-desc {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.8;
+      transition: color 0.4s;
+    }
+
+    /* ── WORK ── */
+    #work {
+      padding: 120px 60px;
+      border-bottom: 1px solid var(--line);
+    }
+    .work-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 72px;
+    }
+    .work-title {
+      font-size: clamp(2.8rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .work-title em { font-style: italic; color: var(--accent); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--line);
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+      aspect-ratio: 16/10;
+      cursor: none;
+    }
+    .project-card.tall { grid-row: span 2; aspect-ratio: unset; min-height: 560px; }
+    .project-card.wide {
+      grid-column: span 2;
+      aspect-ratio: unset;
+      height: 260px;
+    }
+
+    .project-mock {
+      width: 100%; height: 100%;
+      display: block;
+      transition: transform 0.65s ease;
+    }
+    .project-card:hover .project-mock { transform: scale(1.05); }
+
+    .project-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 32px;
+      background: linear-gradient(to top, rgba(17,16,16,0.9) 0%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .project-name {
+      font-size: 1.45rem;
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+    }
+    .project-sub {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: rgba(245,242,236,0.5);
+      margin-top: 4px;
+    }
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border: 1px solid rgba(200,169,110,0.4);
+      padding: 5px 12px;
+      border-radius: 40px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── PROCESS ── */
+    #process {
+      padding: 120px 60px;
+      border-bottom: 1px solid var(--line);
+      background: var(--ink);
+    }
+    #process .section-label { color: rgba(245,242,236,0.35); }
+    #process .section-label::before { background: var(--accent); }
+    .process-heading {
+      font-size: clamp(2.5rem, 4.5vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 72px;
+    }
+    .process-heading em { font-style: italic; color: var(--accent); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(245,242,236,0.07);
+    }
+    .process-step {
+      padding: 48px 36px;
+      background: var(--ink);
+      border-top: 1px solid rgba(245,242,236,0.07);
+    }
+    .process-step-num {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+    .process-step-title {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .process-step-desc {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: rgba(245,242,236,0.42);
+      line-height: 1.85;
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding: 120px 60px; }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 120px;
+      align-items: start;
+    }
+    .big-cta {
+      font-size: clamp(3rem, 6vw, 7rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+    .big-cta em { font-style: italic; color: var(--accent); }
+    .contact-body {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.85;
+      max-width: 340px;
+      margin-bottom: 44px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
+    .contact-info-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+    }
+    .contact-info-row a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+    .contact-info-row a:hover { color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; }
+    .field-wrap {
+      border-bottom: 1px solid var(--line);
+      padding: 26px 0 10px;
+    }
+    .field-wrap label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.59rem;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      text-transform: lowercase;
+      margin-bottom: 10px;
+    }
+    .field-wrap input,
+    .field-wrap textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink);
+      resize: none;
+      cursor: none;
+    }
+    .field-wrap textarea { min-height: 110px; }
+    .field-wrap input::placeholder,
+    .field-wrap textarea::placeholder { color: rgba(122,117,112,0.45); }
+
+    .submit-btn {
+      margin-top: 44px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: lowercase;
+      border: none;
+      padding: 20px 40px;
+      cursor: none;
+      transition: background 0.3s, gap 0.3s;
+    }
+    .submit-btn:hover { background: var(--accent); gap: 26px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-left { display: flex; align-items: center; gap: 40px; }
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.61rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+    }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 0.61rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-location {
+      font-family: var(--mono);
+      font-size: 0.61rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-location::before { content: '◉'; color: var(--accent); font-size: 0.55rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .sr {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .sr.visible { opacity: 1; transform: translateY(0); }
+    .sr-d1 { transition-delay: 0.1s; }
+    .sr-d2 { transition-delay: 0.2s; }
+    .sr-d3 { transition-delay: 0.3s; }
+    .sr-d4 { transition-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      html { font-size: 14px; }
+      nav { padding: 22px 28px; flex-wrap: wrap; gap: 16px; }
+      nav.scrolled { padding: 16px 28px; }
+      nav ul { display: flex; gap: 20px; width: 100%; justify-content: flex-start; }
+      #hero { padding: 0 28px 48px; }
+      .hero-tag { margin-top: 100px; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .hero-stats { gap: 32px; flex-wrap: wrap; }
+      #about { grid-template-columns: 1fr; }
+      .about-left { border-right: none; border-bottom: 1px solid var(--line); padding: 70px 28px; }
+      .about-right { padding: 70px 28px; }
+      #services, #work, #contact, #process { padding: 80px 28px; }
+      .services-header, .work-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.tall { min-height: unset; aspect-ratio: 16/10; }
+      .project-card.wide { grid-column: span 1; height: 220px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+      footer { flex-direction: column; gap: 20px; padding: 28px; text-align: center; }
+      .footer-left { flex-direction: column; gap: 8px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    }
+    
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      nav ul { flex-wrap: wrap; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="logo">unos<span>.</span>studio</a>
+    <ul>
+      <li><a href="#about">about</a></li>
+      <li><a href="#services">services</a></li>
+      <!-- <li><a href="#work">work</a></li> -->
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-dot"></div>
+    <div class="hero-parallax-bg" id="parallaxBg">U</div>
+
+    <div class="hero-main">
+      <p class="hero-tag">web agency &nbsp;·&nbsp; india &nbsp;·&nbsp; est. 2026</p>
+      <h1 class="hero-headline">
+        <span class="reveal-line"><span class="reveal-line-inner">Design that</span></span>
+        <span class="reveal-line"><span class="reveal-line-inner"><em>sells.</em></span></span>
+        <span class="reveal-line"><span class="reveal-line-inner">Code that lasts.</span></span>
+      </h1>
+    </div>
+
+    <div>
+      <div class="hero-bottom">
+        <p class="hero-sub">
+          We are <strong>unos.studio</strong> — a web agency from India crafting deliberate, beautiful digital products for brands ready to stand apart.
+        </p>
+        <a href="#work" class="hero-cta">
+          explore our work
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">40<span>+</span></div>
+          <div class="stat-label">projects delivered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">18<span>+</span></div>
+          <div class="stat-label">happy clients</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span style="font-size:1.5rem;font-style:normal">₹</span>0</div>
+          <div class="stat-label">wasted budgets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>web design</span><span class="dot">·</span>
+      <span>development</span><span class="dot">·</span>
+      <span>branding</span><span class="dot">·</span>
+      <span>ui / ux</span><span class="dot">·</span>
+      <span>motion design</span><span class="dot">·</span>
+      <span>e-commerce</span><span class="dot">·</span>
+      <span>cms integration</span><span class="dot">·</span>
+      <span>seo &amp; performance</span><span class="dot">·</span>
+      <span>web design</span><span class="dot">·</span>
+      <span>development</span><span class="dot">·</span>
+      <span>branding</span><span class="dot">·</span>
+      <span>ui / ux</span><span class="dot">·</span>
+      <span>motion design</span><span class="dot">·</span>
+      <span>e-commerce</span><span class="dot">·</span>
+      <span>cms integration</span><span class="dot">·</span>
+      <span>seo &amp; performance</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-left">
+      <p class="section-label sr">01 — who we are</p>
+      <h2 class="about-heading sr sr-d1">We obsess over<br />the <em>details</em><br />others skip.</h2>
+      <div class="about-body sr sr-d2">
+        <p>unos.studio is a boutique web agency based in India. We partner with startups, founders, and growing brands to build websites that are as functional as they are beautiful.</p>
+        <p>Every pixel is intentional. Every interaction is earned. We don't do templates — we do original, strategic digital work that reflects who you really are.</p>
+      </div>
+    </div>
+    <div class="about-right">
+      <p class="section-label sr">— our philosophy</p>
+      <div class="tagline-big sr sr-d1">
+        Good design<br />isn't a luxury —<br />it's a <em>strategy.</em>
+      </div>
+      <p class="tagline-sub sr sr-d2">
+        Minimal interfaces. &nbsp;·&nbsp; Maximum impact.<br />
+        Built for India. &nbsp;·&nbsp; Trusted worldwide.<br />
+        On time. &nbsp;·&nbsp; Every time.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <h2 class="services-title sr">What we<br /><em>offer</em></h2>
+      <p class="section-label sr">02 — services</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card sr">
+        <p class="service-num">001</p>
+        <h3 class="service-title">Web Design &amp; Development</h3>
+        <p class="service-desc">From concept to launch — pixel-perfect interfaces engineered for performance, speed, and lasting impressions. React, Next.js, Webflow, and beyond.</p>
+      </div>
+      <div class="service-card sr sr-d1">
+        <p class="service-num">002</p>
+        <h3 class="service-title">Brand Identity &amp; Strategy</h3>
+        <p class="service-desc">Visual language that speaks before you do. Logos, type systems, color palettes, and brand guidelines built to endure and differentiate.</p>
+      </div>
+      <div class="service-card sr sr-d2">
+        <p class="service-num">003</p>
+        <h3 class="service-title">UI / UX Design</h3>
+        <p class="service-desc">Research-backed wireframes, interactive prototypes, and design systems that scale. Thoughtful user journeys that convert and delight.</p>
+      </div>
+      <div class="service-card sr sr-d1">
+        <p class="service-num">004</p>
+        <h3 class="service-title">E-commerce Solutions</h3>
+        <p class="service-desc">Shopify and custom storefronts designed to sell. Clean product experiences, seamless checkout flows, and conversion-optimised layouts.</p>
+      </div>
+      <div class="service-card sr sr-d2">
+        <p class="service-num">005</p>
+        <h3 class="service-title">CMS &amp; Content Systems</h3>
+        <p class="service-desc">Edit your site without a developer. We build on Webflow, Sanity, and headless stacks — giving your team full control, zero friction.</p>
+      </div>
+      <div class="service-card sr sr-d3">
+        <p class="service-num">006</p>
+        <h3 class="service-title">Motion &amp; Interaction</h3>
+        <p class="service-desc">Animations that add meaning, not noise. Subtle motion that elevates experience, guides attention, and makes your site unforgettable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK (Hidden temporarily) -->
+  <!--
+  <section id="work">
+    <div class="work-header">
+      <h2 class="work-title sr">Selected<br /><em>work</em></h2>
+      <p class="section-label sr">03 — portfolio</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card tall sr">
+        <svg class="project-mock" viewBox="0 0 560 760" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="560" height="760" fill="#0e0d0c"/>
+          <rect y="0" width="560" height="52" fill="#141312"/>
+          <circle cx="26" cy="26" r="5" fill="#2a2824"/>
+          <circle cx="44" cy="26" r="5" fill="#2a2824"/>
+          <circle cx="62" cy="26" r="5" fill="#2a2824"/>
+          <rect x="190" y="18" width="180" height="16" rx="8" fill="#1a1917"/>
+          <rect x="360" y="21" width="40" height="8" rx="4" fill="#2a2824"/>
+          <rect x="412" y="21" width="40" height="8" rx="4" fill="#2a2824"/>
+          <rect x="464" y="18" width="76" height="14" rx="3" fill="#c8a96e" opacity="0.85"/>
+          <rect x="36" y="90" width="260" height="28" rx="6" fill="#1e1c1a"/>
+          <rect x="36" y="130" width="220" height="22" rx="5" fill="#1e1c1a"/>
+          <rect x="36" y="162" width="180" height="22" rx="5" fill="#c8a96e" opacity="0.5"/>
+          <rect x="36" y="204" width="130" height="38" rx="4" fill="#c8a96e" opacity="0.9"/>
+          <rect x="36" y="270" width="488" height="280" rx="6" fill="#1a1917"/>
+          <rect x="56" y="288" width="180" height="244" rx="4" fill="#222"/>
+          <rect x="252" y="288" width="252" height="116" rx="4" fill="#222"/>
+          <rect x="252" y="414" width="122" height="118" rx="4" fill="#222"/>
+          <rect x="384" y="414" width="120" height="118" rx="4" fill="#c8a96e" opacity="0.18"/>
+          <rect x="80" y="310" width="130" height="200" rx="3" fill="#c8a96e" opacity="0.12"/>
+          <rect x="36" y="572" width="148" height="130" rx="4" fill="#1a1917"/>
+          <rect x="196" y="572" width="148" height="130" rx="4" fill="#1a1917"/>
+          <rect x="356" y="572" width="168" height="130" rx="4" fill="#c8a96e" opacity="0.1"/>
+          <rect x="52" y="586" width="116" height="80" rx="3" fill="#222"/>
+          <rect x="52" y="676" width="80" height="8" rx="4" fill="#2a2824"/>
+          <rect x="212" y="586" width="116" height="80" rx="3" fill="#222"/>
+          <rect x="212" y="676" width="80" height="8" rx="4" fill="#2a2824"/>
+          <rect x="0" y="724" width="560" height="36" fill="#0a0908"/>
+          <rect x="36" y="734" width="80" height="8" rx="4" fill="#2a2824"/>
+          <rect x="390" y="734" width="50" height="8" rx="4" fill="#2a2824"/>
+          <rect x="452" y="734" width="70" height="8" rx="4" fill="#2a2824"/>
+        </svg>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Meridian Collective</div>
+            <div class="project-sub">Fashion brand redesign — Shopify + branding</div>
+          </div>
+          <span class="project-tag">e-commerce</span>
+        </div>
+      </div>
+
+      <div class="project-card sr sr-d1">
+        <svg class="project-mock" viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="560" height="360" fill="#f0ede7"/>
+          <rect width="560" height="48" fill="#faf8f4"/>
+          <rect x="28" y="17" width="72" height="14" rx="7" fill="#ddd8d0"/>
+          <rect x="390" y="18" width="38" height="12" rx="6" fill="#e5e0d8"/>
+          <rect x="438" y="18" width="38" height="12" rx="6" fill="#e5e0d8"/>
+          <rect x="486" y="15" width="50" height="18" rx="3" fill="#111"/>
+          <rect x="28" y="76" width="240" height="30" rx="5" fill="#1a1a1a"/>
+          <rect x="28" y="118" width="180" height="18" rx="5" fill="#1a1a1a" opacity="0.35"/>
+          <rect x="28" y="148" width="140" height="12" rx="4" fill="#aaa49c"/>
+          <rect x="28" y="172" width="110" height="36" rx="3" fill="#1a1a1a"/>
+          <rect x="28" y="224" width="80" height="10" rx="5" fill="#ddd8d0"/>
+          <rect x="28" y="244" width="120" height="8" rx="4" fill="#e5e0d8"/>
+          <rect x="28" y="262" width="100" height="8" rx="4" fill="#e5e0d8"/>
+          <rect x="306" y="56" width="230" height="286" rx="5" fill="#e0dbd3"/>
+          <rect x="316" y="66" width="210" height="266" rx="4" fill="#c8a96e" opacity="0.22"/>
+          <rect x="336" y="110" width="170" height="170" rx="3" fill="#fff" opacity="0.55"/>
+          <rect x="350" y="290" width="80" height="8" rx="4" fill="#c8a96e" opacity="0.5"/>
+          <rect x="350" y="306" width="120" height="8" rx="4" fill="#ccc5ba"/>
+        </svg>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Volta Skincare</div>
+            <div class="project-sub">D2C beauty brand — web + identity</div>
+          </div>
+          <span class="project-tag">web + brand</span>
+        </div>
+      </div>
+
+      <div class="project-card sr sr-d2">
+        <svg class="project-mock" viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="560" height="360" fill="#111"/>
+          <rect width="150" height="360" fill="#0c0c0c"/>
+          <rect x="18" y="28" width="114" height="14" rx="7" fill="#c8a96e" opacity="0.75"/>
+          <rect x="18" y="62" width="90" height="9" rx="4" fill="#333"/>
+          <rect x="18" y="80" width="90" height="9" rx="4" fill="#222"/>
+          <rect x="18" y="98" width="90" height="9" rx="4" fill="#222"/>
+          <rect x="18" y="116" width="90" height="9" rx="4" fill="#222"/>
+          <rect x="18" y="160" width="70" height="9" rx="4" fill="#333"/>
+          <rect x="18" y="178" width="100" height="9" rx="4" fill="#1e1e1e"/>
+          <rect x="18" y="196" width="85" height="9" rx="4" fill="#1e1e1e"/>
+          <rect x="166" y="22" width="180" height="14" rx="7" fill="#1e1e1e"/>
+          <rect x="166" y="54" width="110" height="74" rx="5" fill="#1a1a1a"/>
+          <rect x="286" y="54" width="110" height="74" rx="5" fill="#1a1a1a"/>
+          <rect x="406" y="54" width="132" height="74" rx="5" fill="#c8a96e" opacity="0.15"/>
+          <rect x="178" y="68" width="60" height="10" rx="5" fill="#333"/>
+          <rect x="178" y="86" width="80" height="20" rx="4" fill="#fff" opacity="0.1"/>
+          <rect x="298" y="68" width="60" height="10" rx="5" fill="#333"/>
+          <rect x="298" y="86" width="80" height="20" rx="4" fill="#fff" opacity="0.1"/>
+          <rect x="418" y="68" width="60" height="10" rx="5" fill="#c8a96e" opacity="0.4"/>
+          <rect x="418" y="86" width="80" height="20" rx="4" fill="#c8a96e" opacity="0.2"/>
+          <rect x="166" y="144" width="372" height="180" rx="5" fill="#151515"/>
+          <line x1="188" y1="280" x2="520" y2="280" stroke="#222" stroke-width="1"/>
+          <polyline points="196,272 228,248 260,258 292,226 324,242 356,206 388,218 420,196 452,210 484,186 516,172"
+            stroke="#c8a96e" stroke-width="1.8" fill="none" opacity="0.85"/>
+          <polyline points="196,272 228,248 260,258 292,226 324,242 356,206 388,218 420,196 452,210 484,186 516,172 516,280 196,280"
+            fill="#c8a96e" opacity="0.07"/>
+          <rect x="178" y="154" width="80" height="9" rx="4" fill="#1e1e1e"/>
+          <rect x="434" y="154" width="60" height="8" rx="4" fill="#1e1e1e"/>
+        </svg>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Pulse Capital</div>
+            <div class="project-sub">Fintech dashboard — React + data viz</div>
+          </div>
+          <span class="project-tag">dashboard</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2px; background:var(--line);">
+      <div class="project-card wide sr">
+        <svg class="project-mock" viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="1200" height="260" fill="#f5f2ec"/>
+          <rect width="1200" height="50" fill="#fff" opacity="0.85"/>
+          <rect x="36" y="17" width="88" height="14" rx="7" fill="#ddd8d0"/>
+          <rect x="870" y="18" width="55" height="12" rx="6" fill="#e5e0d8"/>
+          <rect x="938" y="18" width="55" height="12" rx="6" fill="#e5e0d8"/>
+          <rect x="1006" y="18" width="55" height="12" rx="6" fill="#e5e0d8"/>
+          <rect x="1076" y="14" width="88" height="20" rx="4" fill="#111"/>
+          <rect x="36" y="68" width="240" height="164" rx="4" fill="#e0dbd3"/>
+          <rect x="46" y="78" width="220" height="144" rx="3" fill="#c8a96e" opacity="0.2"/>
+          <rect x="292" y="68" width="240" height="78" rx="4" fill="#111" opacity="0.08"/>
+          <rect x="292" y="154" width="240" height="78" rx="4" fill="#c8a96e" opacity="0.2"/>
+          <rect x="548" y="68" width="240" height="164" rx="4" fill="#e0dbd3"/>
+          <rect x="558" y="78" width="220" height="144" rx="3" fill="#111" opacity="0.07"/>
+          <rect x="804" y="68" width="180" height="78" rx="4" fill="#c8a96e" opacity="0.15"/>
+          <rect x="804" y="154" width="180" height="78" rx="4" fill="#e0dbd3"/>
+          <rect x="996" y="68" width="168" height="164" rx="4" fill="#111" opacity="0.06"/>
+          <rect x="56" y="190" width="100" height="8" rx="4" fill="#fff" opacity="0.6"/>
+          <rect x="304" y="80" width="80" height="8" rx="4" fill="#aaa49c"/>
+          <rect x="304" y="166" width="80" height="8" rx="4" fill="#c8a96e" opacity="0.6"/>
+        </svg>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Archifield Studio</div>
+            <div class="project-sub">Architecture portfolio — Webflow CMS + custom animations</div>
+          </div>
+          <span class="project-tag">portfolio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- PROCESS -->
+  <section id="process">
+    <p class="section-label sr">04 — how we work</p>
+    <h2 class="process-heading sr sr-d1">Our<br /><em>process</em></h2>
+    <div class="process-steps">
+      <div class="process-step sr">
+        <p class="process-step-num">01</p>
+        <h3 class="process-step-title">Discover &amp; Define</h3>
+        <p class="process-step-desc">We listen first. Deep-dive into your brand, audience, goals, and competitors — turning insight into a clear creative brief.</p>
+      </div>
+      <div class="process-step sr sr-d1">
+        <p class="process-step-num">02</p>
+        <h3 class="process-step-title">Design &amp; Prototype</h3>
+        <p class="process-step-desc">Wireframes evolve into high-fidelity mockups. You see exactly what you're getting — before a single line of code is written.</p>
+      </div>
+      <div class="process-step sr sr-d2">
+        <p class="process-step-num">03</p>
+        <h3 class="process-step-title">Build &amp; Refine</h3>
+        <p class="process-step-desc">Pixel-perfect development with weekly check-ins. Fast, accessible, SEO-ready — built on the stack that serves you best.</p>
+      </div>
+      <div class="process-step sr sr-d3">
+        <p class="process-step-num">04</p>
+        <h3 class="process-step-title">Launch &amp; Grow</h3>
+        <p class="process-step-desc">Go live with confidence. We handle QA, deployment, and post-launch support — and stick around as your site scales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <h2 class="big-cta sr">Start a<br /><em>project.</em></h2>
+        <p class="contact-body sr sr-d1">Have something in mind? Tell us about it. We typically respond within 24 hours and love a good conversation about ideas.</p>
+        <div class="contact-info sr sr-d2">
+          <div class="contact-info-row">
+            <span>✉</span>
+            <a href="mailto:unos.webagency@gmail.com">unos.webagency@gmail.com</a>
+          </div>
+          <div class="contact-info-row">
+            <span>📍</span>
+            <span>India &nbsp;·&nbsp; Available worldwide</span>
+          </div>
+          <div class="contact-info-row">
+            <span>⏱</span>
+            <span>Response within 24 hrs</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form sr sr-d1" onsubmit="handleSubmit(event)">
+        <div class="field-wrap">
+          <label>your name</label>
+          <input type="text" id="name" placeholder="Priya Sharma" required />
+        </div>
+        <div class="field-wrap">
+          <label>email address</label>
+          <input type="email" id="email" placeholder="priya@startup.in" required />
+        </div>
+        <div class="field-wrap">
+          <label>project budget (inr)</label>
+          <input type="text" id="budget" placeholder="₹50,000 – ₹2,00,000" />
+        </div>
+        <div class="field-wrap">
+          <label>tell us about your project</label>
+          <textarea id="details" placeholder="We're a D2C brand looking to relaunch our website…" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          send message
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <a href="#" class="logo" style="font-size:0.92rem;">unos<span style="color:var(--accent)">.</span>studio</a>
+      <p>© 2026 — all rights reserved</p>
+    </div>
+    <div class="footer-location">India · Available worldwide</div>
+    <div class="footer-links">
+      <a href="#">twitter</a>
+      <a href="#">instagram</a>
+      <a href="#">linkedin</a>
+      <a href="#">behance</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Custom cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, input, textarea, .service-card, .project-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+    });
+
+    // ── Nav shrink on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Parallax on hero bg letter
+    const parallaxBg = document.getElementById('parallaxBg');
+    window.addEventListener('scroll', () => {
+      parallaxBg.style.transform = `translateY(calc(-50% + ${window.scrollY * 0.17}px))`;
+    }, { passive: true });
+
+    // ── Scroll reveal
+    const srEls = document.querySelectorAll('.sr');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    srEls.forEach(el => observer.observe(el));
+
+    // ── Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const budget = document.getElementById('budget').value;
+      const details = document.getElementById('details').value;
+
+      const message = `*New Project Inquiry*\n\n*Name:* ${name}\n*Email:* ${email}\n*Budget:* ${budget}\n*Project Details:* ${details}`;
+      
+      // IMPORTANT: Replace the phone number below with your actual WhatsApp number with country code
+      // For example: 919876543210 (91 for India)
+      const phoneNumber = '916300363135';
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      
+      window.open(whatsappUrl, '_blank');
+
+      const btn = e.target.querySelector('.submit-btn');
+      btn.innerHTML = 'message sent ✓';
+      btn.style.background = 'var(--accent)';
+      btn.style.gap = '0';
+    }
+  </script>
+</body>
+</html>
