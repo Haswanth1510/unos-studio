@@ -733,6 +733,12 @@
       .process-steps { grid-template-columns: 1fr; }
       nav ul { flex-wrap: wrap; gap: 12px; }
     }
+
+    /* Hide custom cursor on touch/mobile devices */
+    @media (pointer: coarse), (max-width: 960px) {
+      #cursor { display: none !important; }
+      body, a, button, input, textarea, .service-card, .project-card { cursor: auto !important; }
+    }
   </style>
 </head>
 <body>
