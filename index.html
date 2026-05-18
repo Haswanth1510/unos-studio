@@ -8,7 +8,7 @@
   <title>unos.studio — Web Design Agency, India | Web Development & Branding</title>
   <meta name="description" content="unos.studio is a premium web design and development agency based in India. We craft beautiful, high-performing websites and digital identities for startups and growing brands. Contact us today." />
   <meta name="keywords" content="web design agency India, web development India, website design, branding agency, UI UX design, e-commerce website, web agency Hyderabad, unos studio" />
-  <meta name="author" content="unos.studio" />
+  <meta name="author" content="CHALLA.HASWANTH" />
   <link rel="canonical" href="https://unos-studio.onrender.com/" />
 
   <!-- Open Graph (for WhatsApp, LinkedIn, Facebook previews) -->
@@ -97,6 +97,7 @@
     nav.scrolled {
       padding: 18px 60px;
       background: rgba(245,242,236,0.92);
+      -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -152,6 +153,7 @@
       color: transparent;
       -webkit-text-stroke: 1px rgba(17,16,16,0.04);
       pointer-events: none;
+      -webkit-user-select: none;
       user-select: none;
       font-family: var(--serif);
       line-height: 1;
@@ -268,6 +270,7 @@
       line-height: 1;
     }
     .stat-num span { color: var(--accent); font-style: italic; }
+    .stat-currency { font-size: 1.5rem; font-style: normal; }
     .stat-label {
       font-family: var(--mono);
       font-size: 0.6rem;
@@ -358,6 +361,72 @@
       letter-spacing: 0.08em;
       color: var(--mid);
       line-height: 2;
+    }
+
+    /* ── FOUNDER ── */
+    #founder {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+      background: var(--ink);
+    }
+    .founder-left {
+      padding: 100px 60px;
+      border-right: 1px solid rgba(245,242,236,0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .founder-right {
+      padding: 100px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #founder .section-label { color: rgba(245,242,236,0.35); }
+    #founder .section-label::before { background: var(--accent); }
+    .founder-name {
+      font-size: clamp(3rem, 5.5vw, 6rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .founder-name em { font-style: italic; color: var(--accent); }
+    .founder-role {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: lowercase;
+    }
+    .founder-bio {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(245,242,236,0.6);
+      line-height: 1.85;
+      max-width: 440px;
+    }
+    .founder-bio p + p { margin-top: 24px; }
+    .founder-socials {
+      margin-top: 60px;
+      display: flex;
+      gap: 28px;
+    }
+    .founder-socials a {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(245,242,236,0.2);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .founder-socials a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
     /* ── SERVICES ── */
@@ -684,6 +753,7 @@
       gap: 8px;
     }
     .footer-location::before { content: '◉'; color: var(--accent); font-size: 0.55rem; }
+    .footer-logo { font-size: 0.92rem; }
 
     /* ── SCROLL REVEAL ── */
     .sr {
@@ -715,6 +785,9 @@
       #about { grid-template-columns: 1fr; }
       .about-left { border-right: none; border-bottom: 1px solid var(--line); padding: 70px 28px; }
       .about-right { padding: 70px 28px; }
+      #founder { grid-template-columns: 1fr; }
+      .founder-left { border-right: none; border-bottom: 1px solid rgba(245,242,236,0.07); padding: 70px 28px; }
+      .founder-right { padding: 70px 28px; }
       #services, #work, #contact, #process { padding: 80px 28px; }
       .services-header, .work-header { flex-direction: column; align-items: flex-start; gap: 24px; }
       .services-grid { grid-template-columns: 1fr 1fr; }
@@ -792,7 +865,7 @@
           <div class="stat-label">happy clients</div>
         </div>
         <div class="stat">
-          <div class="stat-num"><span style="font-size:1.5rem;font-style:normal">₹</span>0</div>
+          <div class="stat-num"><span class="stat-currency">₹</span>0</div>
           <div class="stat-label">wasted budgets</div>
         </div>
       </div>
@@ -841,6 +914,27 @@
         Built for India. &nbsp;·&nbsp; Trusted worldwide.<br />
         On time. &nbsp;·&nbsp; Every time.
       </p>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section id="founder">
+    <div class="founder-left">
+      <div>
+        <p class="section-label sr">— the founder</p>
+        <h2 class="founder-name sr sr-d1">Challa<br /><em>Haswanth</em></h2>
+        <p class="founder-role sr sr-d2">Founder &amp; Lead Developer</p>
+      </div>
+      <div class="founder-socials sr sr-d3">
+        <a href="https://www.instagram.com/challa.haswanth?igsh=MXNpdmFja2hkbm5xcw==" target="_blank" rel="noopener noreferrer">instagram</a>
+        <a href="https://www.linkedin.com/in/haswanth-challa-3501963a4" target="_blank" rel="noopener noreferrer">linkedin</a>
+      </div>
+    </div>
+    <div class="founder-right">
+      <div class="founder-bio sr sr-d1">
+        <p>With a deep passion for digital aesthetics and robust engineering, I founded <strong>unos.studio</strong> to bridge the gap between design that sells and code that lasts.</p>
+        <p>I believe that every digital product should be an immersive experience. My goal is to partner with visionary brands and transform their ideas into deliberate, high-performing web experiences.</p>
+      </div>
     </div>
   </section>
 
@@ -1077,6 +1171,10 @@
         <p class="contact-body sr sr-d1">Have something in mind? Tell us about it. We typically respond within 24 hours and love a good conversation about ideas.</p>
         <div class="contact-info sr sr-d2">
           <div class="contact-info-row">
+            <span>👤</span>
+            <span>CHALLA.HASWANTH</span>
+          </div>
+          <div class="contact-info-row">
             <span>✉</span>
             <a href="mailto:unos.webagency@gmail.com">unos.webagency@gmail.com</a>
           </div>
@@ -1120,14 +1218,14 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-left">
-      <a href="#" class="logo" style="font-size:0.92rem;">unos<span style="color:var(--accent)">.</span>studio</a>
+      <a href="#" class="logo footer-logo">unos<span>.</span>studio</a>
       <p>© 2026 — all rights reserved</p>
     </div>
     <div class="footer-location">India · Available worldwide</div>
     <div class="footer-links">
       <a href="#">twitter</a>
       <a href="#">instagram</a>
-      <a href="#">linkedin</a>
+      <a href="https://www.linkedin.com/in/haswanth-challa-3501963a4?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer">linkedin</a>
       <a href="#">behance</a>
     </div>
   </footer>
