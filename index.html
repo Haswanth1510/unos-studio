@@ -603,6 +603,15 @@
       gap: 12px;
     }
 
+    /* Auto-style single project grids to span full-width without empty columns */
+    .projects-grid:has(> :only-child) {
+      grid-template-columns: 1fr;
+    }
+    .projects-grid:has(> :only-child) .project-card {
+      aspect-ratio: unset;
+      height: 420px;
+    }
+
     /* ── PROCESS ── */
     #process {
       padding: 120px 60px;
@@ -828,6 +837,7 @@
       .projects-grid { grid-template-columns: 1fr; }
       .project-card.tall { min-height: unset; aspect-ratio: 16/10; }
       .project-card.wide { grid-column: span 1; height: 220px; }
+      .projects-grid:has(> :only-child) .project-card { aspect-ratio: 16/10; height: auto; }
       .process-steps { grid-template-columns: 1fr 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 60px; }
       footer { flex-direction: column; gap: 20px; padding: 28px; text-align: center; }
@@ -1111,11 +1121,11 @@
       </div>
     </div>
 
-    <!-- Category 3: UI Designs -->
+    <!-- Category 3: UI Designs (Commented out until design images are provided) -->
+    <!--
     <div class="work-category-section sr">
       <h3 class="category-title">03 / ui designs</h3>
       <div class="projects-grid">
-        <!-- Project 1: Volta Skincare Concept -->
         <a href="#" class="project-card sr sr-d1" onclick="event.preventDefault()">
           <svg class="project-mock" viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="360" fill="#f0ede7"/>
@@ -1146,7 +1156,6 @@
           </div>
         </a>
 
-        <!-- Project 2: Pulse Capital Concept -->
         <a href="#" class="project-card sr sr-d2" onclick="event.preventDefault()">
           <svg class="project-mock" viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="360" fill="#111"/>
@@ -1188,6 +1197,7 @@
         </a>
       </div>
     </div>
+    -->
   </section>
 
   <!-- PROCESS -->
