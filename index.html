@@ -363,8 +363,8 @@
       line-height: 2;
     }
 
-    /* ── FOUNDER ── */
-    #founder {
+    /* ── FOUNDER & CO-FOUNDER ── */
+    #founder, #cofounder {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid var(--line);
@@ -383,8 +383,8 @@
       flex-direction: column;
       justify-content: center;
     }
-    #founder .section-label { color: rgba(245,242,236,0.35); }
-    #founder .section-label::before { background: var(--accent); }
+    #founder .section-label, #cofounder .section-label { color: rgba(245,242,236,0.35); }
+    #founder .section-label::before, #cofounder .section-label::before { background: var(--accent); }
     .founder-name {
       font-size: clamp(3rem, 5.5vw, 6rem);
       font-weight: 300;
@@ -778,14 +778,27 @@
       nav { padding: 22px 28px; flex-wrap: wrap; gap: 16px; }
       nav.scrolled { padding: 16px 28px; }
       nav ul { display: none; }
-      #hero { padding: 80px 28px 48px; }
-      .hero-main { justify-content: flex-start; }
-      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 28px; }
-      .hero-stats { gap: 32px; flex-wrap: wrap; }
+      #hero { 
+        min-height: unset; 
+        display: flex; 
+        flex-direction: column; 
+        padding: 85px 24px 32px; 
+      }
+      .hero-main { padding-bottom: 24px; justify-content: flex-start; }
+      .hero-tag { margin-bottom: 18px; }
+      .hero-headline { font-size: clamp(2.5rem, 8vw, 3.8rem); }
+      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-sub { font-size: 0.95rem; line-height: 1.6; max-width: 100%; }
+      .hero-stats { 
+        margin-top: 32px; 
+        padding-top: 24px; 
+        gap: 20px 32px; 
+        flex-wrap: wrap; 
+      }
       #about { grid-template-columns: 1fr; }
       .about-left { border-right: none; border-bottom: 1px solid var(--line); padding: 70px 28px; }
       .about-right { padding: 70px 28px; }
-      #founder { grid-template-columns: 1fr; }
+      #founder, #cofounder { grid-template-columns: 1fr; }
       .founder-left { border-right: none; border-bottom: 1px solid rgba(245,242,236,0.07); padding: 70px 28px; }
       .founder-right { padding: 70px 28px; }
       #services, #work, #contact, #process { padding: 80px 28px; }
@@ -848,8 +861,8 @@
         <p class="hero-sub">
           We are <strong>unos.studio</strong> — a web agency from India crafting deliberate, beautiful digital products for brands ready to stand apart.
         </p>
-        <a href="#work" class="hero-cta">
-          explore our work
+        <a href="https://unos.framer.website/" target="_blank" rel="noopener noreferrer" class="hero-cta">
+          explore our portfolio
           <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
             <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -934,6 +947,27 @@
       <div class="founder-bio sr sr-d1">
         <p>With a deep passion for digital aesthetics and robust engineering, I founded <strong>unos.studio</strong> to bridge the gap between design that sells and code that lasts.</p>
         <p>I believe that every digital product should be an immersive experience. My goal is to partner with visionary brands and transform their ideas into deliberate, high-performing web experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CO-FOUNDER -->
+  <section id="cofounder">
+    <div class="founder-left">
+      <div>
+        <p class="section-label sr">— the co-founder</p>
+        <h2 class="founder-name sr sr-d1">Thokala<br /><em>Praneeth Kumar</em></h2>
+        <p class="founder-role sr sr-d2">Co-Founder &amp; Creative Director</p>
+      </div>
+      <div class="founder-socials sr sr-d3">
+        <a href="mailto:tokalajoshi@gmail.com">email</a>
+        <a href="tel:+919347947054">phone</a>
+      </div>
+    </div>
+    <div class="founder-right">
+      <div class="founder-bio sr sr-d1">
+        <p>Committed to shaping compelling visual narratives and seamless user experiences, I co-founded <strong>unos.studio</strong> to deliver strategic brand design and intuitive digital interfaces.</p>
+        <p>I believe that great design is purposeful and strategic. My focus is on crafting clean, high-impact designs that help modern brands connect with their audiences and grow effectively.</p>
       </div>
     </div>
   </section>
