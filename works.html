@@ -7,16 +7,16 @@
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   <link rel="canonical" href="https://unos-studio.onrender.com/works.html" />
 
-  <title>Explore Our Works — unos.studio | Selected Portfolio &amp; Case Studies</title>
-  <meta name="description" content="Explore selected case studies and live web platforms by unos studio — bespoke web development, branding, digital products, and UI/UX design.">
-  <meta name="keywords" content="unos studio works, web design portfolio, web development case studies, UI UX portfolio, Pavan Padma wedding, Saikrishna portfolio, Siddhi Vinayaka cards">
+  <title>Explore Our Works — unos.studio &amp; ninespace | Selected Web, Logos &amp; Motion</title>
+  <meta name="description" content="Explore selected case studies, web platforms, logo designs, and motion animations by unos studio and ninespace — bespoke web development, 3D motion, and visual identities.">
+  <meta name="keywords" content="unos studio works, ninespace studio, logo design, logo animation, motion design, web development portfolio, UI UX case studies, brand identity">
   <meta name="author" content="CHALLA.HASWANTH">
   <meta name="robots" content="index, follow">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0b0b'/><text x='50%25' y='68%25' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='18' fill='%23ffffff'>u</text></svg>">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Explore Our Works — unos.studio" />
-  <meta property="og:description" content="Explore selected case studies and live web platforms by unos studio — bespoke web development, branding, digital products, and UI/UX design." />
+  <meta property="og:title" content="Explore Our Works — unos.studio &amp; ninespace" />
+  <meta property="og:description" content="Explore selected case studies, live web platforms, logo designs, and motion animations by unos studio and ninespace." />
   <meta property="og:url" content="https://unos-studio.onrender.com/works.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="unos.studio" />
@@ -25,8 +25,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Explore Our Works — unos.studio" />
-  <meta name="twitter:description" content="Explore selected case studies and live web platforms by unos studio." />
+  <meta name="twitter:title" content="Explore Our Works — unos.studio &amp; ninespace" />
+  <meta name="twitter:description" content="Explore selected case studies, live web platforms, logo designs, and motion animations by unos studio and ninespace." />
   <meta name="twitter:image" content="https://unos-studio.onrender.com/assets/project-unos-framer.jpg" />
 
   <!-- JSON-LD Structured Data Schema -->
@@ -34,9 +34,9 @@
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Selected Portfolio & Case Studies — unos.studio",
+    "name": "Selected Portfolio & Case Studies — unos.studio & ninespace",
     "url": "https://unos-studio.onrender.com/works.html",
-    "description": "Curated collection of live web applications, e-commerce stores, and digital portfolio products engineered by unos.studio.",
+    "description": "Curated collection of live web applications, logo designs, motion animations, and digital portfolio products engineered by unos.studio and ninespace.",
     "isPartOf": {
       "@type": "WebSite",
       "name": "unos.studio",
@@ -616,16 +616,38 @@
     .pc-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 12px;
+      align-items: center;
     }
 
     .pc-tag {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #71717a;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      padding: 3.5px 10px;
+      border-radius: 9999px;
+      background: #f4f4f5;
+      color: #52525b;
+      font-size: 11px;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      line-height: 1.35;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      cursor: default;
+    }
+
+    .project-card:hover .pc-tag {
+      background: #e4e4e7;
+      color: #18181b;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .pc-tag:hover {
+      background: #09090b !important;
+      color: #ffffff !important;
+      border-color: #09090b !important;
+      transform: translateY(-1px);
     }
 
     .pc-title {
@@ -653,6 +675,227 @@
       font-size: 12.5px;
       font-weight: 600;
       color: #059669;
+    }
+
+    /* FILTER TABS BAR */
+    .works-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: clamp(28px, 4vw, 44px);
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #3f3f46;
+      border: 1px solid #e4e4e7;
+      border-radius: 9999px;
+      padding: 9px 20px;
+      font-size: clamp(12px, 1.05vw, 13.5px);
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .filter-btn:hover {
+      background: #f4f4f5;
+      border-color: #d4d4d8;
+      color: #09090b;
+      transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+      background: #09090b;
+      color: #ffffff;
+      border-color: #09090b;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    }
+
+    .filter-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f4f5;
+      color: #71717a;
+      border-radius: 9999px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .filter-btn.active .filter-count {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    /* CARD BADGES & OVERLAYS */
+    .badge-reel {
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.35) !important;
+    }
+
+    .badge-carousel {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
+    }
+
+    .badge-identity {
+      background: #09090b !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .pc-media-play {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 18px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .project-card:hover .pc-media-play {
+      transform: scale(1.15);
+      background: rgba(0, 0, 0, 0.85);
+      border-color: #ffffff;
+    }
+
+    .project-card[data-hidden="true"] {
+      display: none !important;
+    }
+
+    /* INSTAGRAM STUDIO BANNER */
+    .insta-studio-banner {
+      margin-top: clamp(48px, 6vw, 80px);
+      background: linear-gradient(135deg, #09090b 0%, #17171c 100%);
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 44px) clamp(22px, 3.8vw, 48px);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+    }
+
+    .insta-studio-banner::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .isb-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(20px, 3.2vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .isb-left {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.2vw, 24px);
+    }
+
+    .isb-avatar-wrap {
+      position: relative;
+      width: clamp(58px, 6vw, 76px);
+      height: clamp(58px, 6vw, 76px);
+      flex-shrink: 0;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      box-shadow: 0 8px 24px rgba(220, 39, 67, 0.35);
+    }
+
+    .isb-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid #09090b;
+      display: block;
+    }
+
+    .isb-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .isb-handle {
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .isb-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #e4e4e7;
+    }
+
+    .isb-bio {
+      font-size: clamp(13px, 1.15vw, 14.5px);
+      color: #a1a1aa;
+      line-height: 1.5;
+      max-width: 48ch;
+    }
+
+    .isb-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #ffffff;
+      border-radius: 9999px;
+      padding: clamp(12px, 1.3vw, 15px) clamp(22px, 2.4vw, 32px);
+      font-size: clamp(13px, 1.15vw, 15px);
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(220, 39, 67, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .isb-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(220, 39, 67, 0.55);
     }
 
     /* CTA BOX */
@@ -893,7 +1136,8 @@
         margin-bottom: 6px !important;
       }
       .pc-tag {
-        font-size: clamp(7px, 1.5vw, 10px) !important;
+        font-size: clamp(8px, 1.5vw, 10px) !important;
+        padding: 2px 7px !important;
       }
       .pc-title {
         font-size: clamp(11.5px, 2.4vw, 17px) !important;
@@ -908,6 +1152,54 @@
       .pc-meta {
         padding-top: 8px !important;
         font-size: clamp(7.5px, 1.6vw, 11px) !important;
+      }
+      .works-filter-bar {
+        gap: 6px !important;
+        margin-bottom: 20px !important;
+      }
+      .filter-btn {
+        padding: 6px 14px !important;
+        font-size: clamp(9px, 1.8vw, 12px) !important;
+        gap: 5px !important;
+      }
+      .filter-count {
+        font-size: 9px !important;
+        padding: 1px 5px !important;
+      }
+      .pc-media-play {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 13px !important;
+      }
+      .insta-studio-banner {
+        padding: clamp(18px, 3.5vw, 26px) !important;
+        border-radius: 20px !important;
+        margin-top: 32px !important;
+      }
+      .isb-content {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+      }
+      .isb-left {
+        gap: 14px !important;
+      }
+      .isb-avatar-wrap {
+        width: 48px !important;
+        height: 48px !important;
+      }
+      .isb-handle {
+        font-size: 16px !important;
+      }
+      .isb-bio {
+        font-size: 11.5px !important;
+        line-height: 1.4 !important;
+      }
+      .isb-cta {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 10px 18px !important;
+        font-size: 12.5px !important;
       }
       .stats-row {
         grid-template-columns: repeat(4, 1fr);
@@ -1168,7 +1460,7 @@
               </svg>
             </span>
           </h1>
-          <p>A curated collection of web platforms, bespoke e-commerce systems, brand identities, and AI automations crafted with precision, intentional aesthetics, and high-performance engineering.</p>
+          <p>A curated collection of live web platforms, brand identity systems, logo designs, and motion animations crafted with intentional aesthetics, dynamic storytelling, and high-performance engineering.</p>
 
           <!-- HERO ACTIONS -->
           <div class="works-hero-actions">
@@ -1183,13 +1475,13 @@
             </a>
             <div class="works-quick-meta">
               <div class="wqm-item">
-                <b>4</b>
-                <span>Original Projects</span>
+                <b>14</b>
+                <span>Works &amp; Case Studies</span>
               </div>
               <div class="wqm-divider"></div>
               <div class="wqm-item">
                 <b>100%</b>
-                <span>Live &amp; Deployed</span>
+                <span>Custom Craft</span>
               </div>
             </div>
           </div>
@@ -1225,10 +1517,18 @@
   <!-- PROJECTS SECTION -->
   <section class="projects-section">
     <div class="w">
-            <div class="projects-grid" id="projectsGrid">
+      <!-- CATEGORY FILTER TABS -->
+      <div class="works-filter-bar" id="worksFilterBar">
+        <button class="filter-btn active" data-filter="all">All Works <span class="filter-count">14</span></button>
+        <button class="filter-btn" data-filter="web">Web Platforms <span class="filter-count">4</span></button>
+        <button class="filter-btn" data-filter="logo">Logo &amp; Brand Design <span class="filter-count">6</span></button>
+        <button class="filter-btn" data-filter="motion">Logo Animations &amp; Motion <span class="filter-count">4</span></button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
 
         <!-- Project 1: Pavan & Padma Wedding -->
-        <a href="https://pavan-kumar-lakshmi-naga-padma-suseela.onrender.com/" target="_blank" rel="noopener" class="project-card">
+        <a href="https://pavan-kumar-lakshmi-naga-padma-suseela.onrender.com/" target="_blank" rel="noopener" class="project-card" data-category="web">
           <div class="pc-img-wrap">
             <span class="pc-badge">Live Web App</span>
             <span class="pc-arrow">↗</span>
@@ -1237,9 +1537,7 @@
           <div class="pc-content">
             <div class="pc-tags">
               <span class="pc-tag">Luxury Event</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">Interactive Invitation</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">Temple Architecture</span>
             </div>
             <h3 class="pc-title">Pavan &amp; Padma — Luxury Wedding Invitation Platform</h3>
@@ -1252,7 +1550,7 @@
         </a>
 
         <!-- Project 2: Saikrishna Bandi Portfolio -->
-        <a href="https://saikrishna-portfolio-56rg.onrender.com/" target="_blank" rel="noopener" class="project-card">
+        <a href="https://saikrishna-portfolio-56rg.onrender.com/" target="_blank" rel="noopener" class="project-card" data-category="web">
           <div class="pc-img-wrap">
             <span class="pc-badge">Live Portfolio</span>
             <span class="pc-arrow">↗</span>
@@ -1261,9 +1559,7 @@
           <div class="pc-content">
             <div class="pc-tags">
               <span class="pc-tag">Personal Brand</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">Data Analytics</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">Interactive UI</span>
             </div>
             <h3 class="pc-title">Saikrishna Bandi — Data Analyst &amp; BI Developer</h3>
@@ -1276,7 +1572,7 @@
         </a>
 
         <!-- Project 3: UNOS STUDIO Platform -->
-        <a href="https://unos.framer.website/" target="_blank" rel="noopener" class="project-card">
+        <a href="https://unos.framer.website/" target="_blank" rel="noopener" class="project-card" data-category="web">
           <div class="pc-img-wrap">
             <span class="pc-badge">Live Showcase</span>
             <span class="pc-arrow">↗</span>
@@ -1285,9 +1581,7 @@
           <div class="pc-content">
             <div class="pc-tags">
               <span class="pc-tag">Product Strategy</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">High-End Design</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">Framer &amp; Web</span>
             </div>
             <h3 class="pc-title">UNOS STUDIO — Category-Winning Digital Products</h3>
@@ -1300,7 +1594,7 @@
         </a>
 
         <!-- Project 4: Siddhi Vinayaka Cards -->
-        <a href="https://siddhi-vinayak-cards.onrender.com" target="_blank" rel="noopener" class="project-card">
+        <a href="https://siddhi-vinayak-cards.onrender.com" target="_blank" rel="noopener" class="project-card" data-category="web">
           <div class="pc-img-wrap">
             <span class="pc-badge">Live E-Commerce</span>
             <span class="pc-arrow">↗</span>
@@ -1309,9 +1603,7 @@
           <div class="pc-content">
             <div class="pc-tags">
               <span class="pc-tag">Heritage Luxury</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">E-Commerce Catalog</span>
-              <span class="pc-tag">·</span>
               <span class="pc-tag">Custom Stationers</span>
             </div>
             <h3 class="pc-title">Siddhi Vinayaka Cards — Heritage Luxury Invitation House</h3>
@@ -1323,6 +1615,254 @@
           </div>
         </a>
 
+        <!-- Instagram Post 1: Creamy Milk Mascot Animation -->
+        <a href="https://www.instagram.com/reel/DcX9QCxKSzM/" target="_blank" rel="noopener" class="project-card" data-category="motion">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-reel">▶ Logo Animation</span>
+            <span class="pc-arrow">↗</span>
+            <div class="pc-media-play" aria-hidden="true">▶</div>
+            <img src="assets/instagram/creamy-milk-animation.jpg" alt="Creamy Milk mascot character and logo animation">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Logo Animation</span>
+              <span class="pc-tag">Motion Design</span>
+              <span class="pc-tag">Character Mascot</span>
+            </div>
+            <h3 class="pc-title">Creamy Milk — Character Mascot &amp; Logo Animation</h3>
+            <p class="pc-desc">"When your logo has more personality than you do." A playful mascot built for a friendly dairy brand to feel warm, joyful, and memorable through charming kinetic motion.</p>
+            <div class="pc-meta">
+              <span>Instagram Reel · @ninespace.studio</span>
+              <span>Motion Branding</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 2: Creamy Milk Brand Kit & Packaging -->
+        <a href="https://www.instagram.com/p/DcX9FTBlIkb/" target="_blank" rel="noopener" class="project-card" data-category="logo">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-carousel">⧉ Brand Kit &amp; System</span>
+            <span class="pc-arrow">↗</span>
+            <img src="assets/instagram/creamy-milk-brand-kit.webp" alt="Creamy Milk brand identity kit and packaging design">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Brand Identity</span>
+              <span class="pc-tag">Packaging Design</span>
+              <span class="pc-tag">Brand Kit</span>
+            </div>
+            <h3 class="pc-title">Creamy Milk — Pure, Creamy &amp; Nutritious Brand System</h3>
+            <p class="pc-desc">From initial pencil sketch to a complete brand system — custom mascot mark, milk carton packaging, color palette, and multi-format application kit made for happy families.</p>
+            <div class="pc-meta">
+              <span>Instagram Carousel · 4 Slides</span>
+              <span>Packaging &amp; Identity</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 3: NINESPACE Brand System -->
+        <a href="https://www.instagram.com/p/DcWlCeTgWu-/" target="_blank" rel="noopener" class="project-card" data-category="logo">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-identity">✦ Flagship Identity</span>
+            <span class="pc-arrow">↗</span>
+            <img src="assets/instagram/ninespace-brand-system.webp" alt="NINESPACE full studio brand identity system">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Design System</span>
+              <span class="pc-tag">Minimal Wordmark</span>
+              <span class="pc-tag">Visual Kit</span>
+            </div>
+            <h3 class="pc-title">NINESPACE — "Space for Ideas, Room for Impact"</h3>
+            <p class="pc-desc">A cohesive monochrome identity system where a number becomes a mark. Features logo variations, typographic hierarchy, iconography, and real-world brand collateral.</p>
+            <div class="pc-meta">
+              <span>Instagram Post · @ninespace.studio</span>
+              <span>Studio Visual System</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 4: AGAIN. Motion Logo Reveal -->
+        <a href="https://www.instagram.com/reel/DcQeklzqg-e/" target="_blank" rel="noopener" class="project-card" data-category="motion">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-reel">▶ Motion Logo Reveal</span>
+            <span class="pc-arrow">↗</span>
+            <div class="pc-media-play" aria-hidden="true">▶</div>
+            <img src="assets/instagram/again-logo-reveal.jpg" alt="AGAIN dynamic refresh arrow motion logo reveal animation">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Logo Reveal</span>
+              <span class="pc-tag">Kinetic Type</span>
+              <span class="pc-tag">Motion Design</span>
+            </div>
+            <h3 class="pc-title">AGAIN. — Reversible Refresh Logo Animation</h3>
+            <p class="pc-desc">Dynamic logo animation bringing the hidden refresh icon inside the custom letter 'G' to life: pulling apart, re-cycling, and reconstructing again with seamless kinetic physics.</p>
+            <div class="pc-meta">
+              <span>Instagram Reel · @ninespace.studio</span>
+              <span>Logo Animation</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 5: AGAIN. Visual Identity -->
+        <a href="https://www.instagram.com/p/DcMXm9_kwEf/" target="_blank" rel="noopener" class="project-card" data-category="logo">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-carousel">⧉ Visual Identity</span>
+            <span class="pc-arrow">↗</span>
+            <img src="assets/instagram/again-visual-identity.webp" alt="AGAIN visual identity and minimal design exploration">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Visual Identity</span>
+              <span class="pc-tag">Minimal Design</span>
+              <span class="pc-tag">Typography</span>
+            </div>
+            <h3 class="pc-title">AGAIN. — "Break. Rebuild. Repeat." Identity</h3>
+            <p class="pc-desc">Visual identity inspired by the truth that nothing is ever truly finished. From pencil sketch ideation to minimal vector geometry and motion-ready typographic extensions.</p>
+            <div class="pc-meta">
+              <span>Instagram Carousel · 3 Slides</span>
+              <span>Identity Exploration</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 6: Red Express Couriers Redesign -->
+        <a href="https://www.instagram.com/p/DcEmnpkh1Qz/" target="_blank" rel="noopener" class="project-card" data-category="logo">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-identity">✦ Brand Redesign</span>
+            <span class="pc-arrow">↗</span>
+            <img src="assets/instagram/red-express-couriers.webp" alt="Red Express Couriers logistics and transport concept logo redesign">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Brand Redesign</span>
+              <span class="pc-tag">Logistics Fleet</span>
+              <span class="pc-tag">Vector Mark</span>
+            </div>
+            <h3 class="pc-title">Red Express Couriers — High-Velocity Logistics Identity</h3>
+            <p class="pc-desc">Modern overhaul for a transport brand — dynamic two-tone slanted typography, streamlined vector delivery truck, and a high-urgency color system communicating instantaneous speed.</p>
+            <div class="pc-meta">
+              <span>Instagram Post · @ninespace.studio</span>
+              <span>Logistics Identity</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 7: disconnect. Glitch Logo Animation -->
+        <a href="https://www.instagram.com/reel/Db81HDpB0TR/" target="_blank" rel="noopener" class="project-card" data-category="motion">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-reel">▶ Glitch Reveal</span>
+            <span class="pc-arrow">↗</span>
+            <div class="pc-media-play" aria-hidden="true">▶</div>
+            <img src="assets/instagram/disconnect-glitch-animation.jpg" alt="disconnect cyber glitch motion logo animation reveal">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Glitch Animation</span>
+              <span class="pc-tag">Motion Graphic</span>
+              <span class="pc-tag">Sound &amp; Type</span>
+            </div>
+            <h3 class="pc-title">disconnect. — Cyber Glitch Motion Logo Reveal</h3>
+            <p class="pc-desc">"When the wifi dies, so does the logo." A glitch-in reveal for a wordmark celebrating offline disconnection, with scanlines, chromatic shifts, and instant character rebuild.</p>
+            <div class="pc-meta">
+              <span>Instagram Reel · @ninespace.studio</span>
+              <span>Motion Typography</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 8: disconnect. Minimal Wordmark -->
+        <a href="https://www.instagram.com/p/Db808ZvgRvO/" target="_blank" rel="noopener" class="project-card" data-category="logo">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-carousel">⧉ Wordmark Concept</span>
+            <span class="pc-arrow">↗</span>
+            <img src="assets/instagram/disconnect-minimal-wordmark.webp" alt="disconnect minimal wordmark featuring iconic offline dino silhouette">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Minimal Logo</span>
+              <span class="pc-tag">Custom Typography</span>
+              <span class="pc-tag">Wordmark</span>
+            </div>
+            <h3 class="pc-title">disconnect. — Subtle Nostalgia Minimal Wordmark</h3>
+            <p class="pc-desc">A concept logo built around the universal 'no signal' moment, embedding the retro 8-bit dinosaur silhouette directly into the word's spine for an understated, clever mark.</p>
+            <div class="pc-meta">
+              <span>Instagram Carousel · 2 Slides</span>
+              <span>Minimal Wordmark</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 9: Jorah Men Motion Logo Reveal -->
+        <a href="https://www.instagram.com/reel/Db8RHSzqICv/" target="_blank" rel="noopener" class="project-card" data-category="motion">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-reel">▶ Fashion Motion</span>
+            <span class="pc-arrow">↗</span>
+            <div class="pc-media-play" aria-hidden="true">▶</div>
+            <img src="assets/instagram/jorah-men-motion-reveal.jpg" alt="Jorah Men luxury fashion logo animation with bespoke garment rack monogram">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Luxury Fashion</span>
+              <span class="pc-tag">Logo Reveal</span>
+              <span class="pc-tag">Haute Couture</span>
+            </div>
+            <h3 class="pc-title">Jorah Men — Luxury Garment Rail Motion Reveal</h3>
+            <p class="pc-desc">From garment to letterform — the letter 'J' transforms into a sleek bespoke fashion rail hanging designer attire, brought into graceful motion for an opulent menswear label.</p>
+            <div class="pc-meta">
+              <span>Instagram Reel · @ninespace.studio</span>
+              <span>Fashion Motion</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram Post 10: Jorah Men Concept Redesign -->
+        <a href="https://www.instagram.com/p/Db6XgBgkycc/" target="_blank" rel="noopener" class="project-card" data-category="logo">
+          <div class="pc-img-wrap">
+            <span class="pc-badge badge-carousel">⧉ Brand Redesign</span>
+            <span class="pc-arrow">↗</span>
+            <img src="assets/instagram/jorah-men-concept-redesign.webp" alt="Jorah Men concept brand identity redesign for prominent menswear label">
+          </div>
+          <div class="pc-content">
+            <div class="pc-tags">
+              <span class="pc-tag">Haute Couture</span>
+              <span class="pc-tag">Identity Redesign</span>
+              <span class="pc-tag">Fashion Mark</span>
+            </div>
+            <h3 class="pc-title">Jorah Men — Opulent Haute Couture Identity Redesign</h3>
+            <p class="pc-desc">A refined lens on one of Delhi's prominent menswear fashion houses. The monogram becomes an architectural hanger rail — because Jorah is not just a label, it is a curated wardrobe.</p>
+            <div class="pc-meta">
+              <span>Instagram Carousel · 2 Slides</span>
+              <span>Fashion Brand System</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- INSTAGRAM STUDIO SHOWCASE STRIP -->
+      <div class="insta-studio-banner">
+        <div class="isb-content">
+          <div class="isb-left">
+            <div class="isb-avatar-wrap">
+              <img src="assets/instagram/profile-ninespace.jpg" alt="NINESPACE Studio" onerror="this.src='assets/logo-ninespace-trans.png'">
+            </div>
+            <div>
+              <div class="isb-title-row">
+                <span class="isb-handle">@ninespace.studio</span>
+                <span class="isb-badge">Official Creator Profile</span>
+              </div>
+              <p class="isb-bio">Freelance Designer ✨ Logos • Invitations • Motion Animations • Websites. Helping ambitious brands &amp; events look their absolute best.</p>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/ninespace.studio?stkn=MWFtcmw2M2ZxZzdnag==" target="_blank" rel="noopener" class="isb-cta">
+            <span>Follow @ninespace.studio &amp; DM</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1364,7 +1904,7 @@
         </ul>
         <ul>
           <h5>Social Media</h5>
-          <li><a href="https://www.instagram.com/challa.haswanth" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.instagram.com/ninespace.studio?stkn=MWFtcmw2M2ZxZzdnag==" target="_blank" rel="noopener">Instagram (@ninespace.studio)</a></li>
           <li><a href="https://www.linkedin.com/in/haswanth-challa-3501963a4" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="index.html#cta">Twitter</a></li>
           <li><a href="index.html#cta">Behance</a></li>
@@ -1390,7 +1930,26 @@
       mobileMenu.classList.remove('open');
     }));
 
+    // Interactive category filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
 
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            card.removeAttribute('data-hidden');
+          } else {
+            card.setAttribute('data-hidden', 'true');
+          }
+        });
+      });
+    });
   </script>
 
   <!-- INTERACTIVE CONTACT MODAL (WHATSAPP OR CALL) -->

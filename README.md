@@ -34,7 +34,7 @@ Official repository for **unos.studio** — crafting deliberate, high-performanc
 ## 📞 Get in Touch
 - **WhatsApp & Direct Call:** [+91 63003 63135](https://wa.me/916300363135)
 - **Email:** [unos.webagency@gmail.com](mailto:unos.webagency@gmail.com)
-- **Instagram:** [@challa.haswanth](https://www.instagram.com/challa.haswanth)
+- **Instagram:** [@ninespace.studio](https://www.instagram.com/ninespace.studio?stkn=MWFtcmw2M2ZxZzdnag==)
 - **LinkedIn:** [Haswanth Challa](https://www.linkedin.com/in/haswanth-challa-3501963a4)
 
 ---
